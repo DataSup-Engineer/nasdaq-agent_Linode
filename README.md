@@ -170,25 +170,30 @@ See `.env.example` for complete configuration options.
 
 ## Deployment
 
-### AWS EC2 Deployment
+### Linode Deployment
 
-For production deployment on AWS EC2, see the comprehensive [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md).
+For production deployment on Linode, see the comprehensive [LINODE_DEPLOYMENT.md](LINODE_DEPLOYMENT.md).
 
 **Quick deployment:**
 ```bash
-# On EC2 instance
+# On Linode instance
 git clone https://github.com/DataSup-Engineer/nasdaq-agent.git
 cd nasdaq-agent
-sudo ./deploy.sh
+sudo ./deploy_linode.sh
 ```
 
 The deployment script handles:
-- System dependencies installation
+- System dependencies installation (Python 3.11+)
 - Python environment setup
 - Service configuration
-- Firewall setup
+- UFW firewall setup (ports 22, 8000, 6000)
 - Log rotation
 - Systemd service creation
+
+**Linode Instance Requirements:**
+- Ubuntu 22.04 LTS (recommended)
+- Minimum: 2GB RAM, 2 CPU cores
+- Recommended: 4GB RAM (Linode 4GB plan)
 
 ### Docker Deployment (Coming Soon)
 
@@ -260,7 +265,7 @@ Application logs are stored in `logs/`:
 
 ```bash
 # Quick health check
-./health_check.sh
+./health_check_linode.sh
 
 # Detailed status
 curl http://localhost:8000/status
@@ -302,7 +307,7 @@ tail -f logs/nest_a2a.log
 
 ```bash
 # Validate environment configuration
-./validate_env.sh .env
+./validate_env_linode.sh .env
 
 # Test API endpoints
 curl http://localhost:8000/health
@@ -345,7 +350,7 @@ Contributions are welcome! Please follow these guidelines:
 ## Support
 
 For issues, questions, or contributions:
-- Check the [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for deployment issues
+- Check the [LINODE_DEPLOYMENT.md](LINODE_DEPLOYMENT.md) for deployment issues
 - Review logs in `logs/` directory
 - Open an issue on GitHub
 

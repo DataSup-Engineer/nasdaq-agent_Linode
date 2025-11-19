@@ -1,0 +1,48 @@
+# Core web framework
+fastapi>=0.104.0,<1.0.0
+uvicorn[standard]>=0.24.0,<1.0.0
+
+# AI and LLM frameworks
+langchain>=0.1.0,<0.3.0
+langchain-anthropic>=0.1.0,<0.3.0
+anthropic>=0.7.0,<1.0.0
+
+# Market data
+yfinance>=0.2.32
+
+# Additional dependencies
+pydantic>=2.0.0,<3.0.0
+pydantic-settings>=2.0.0,<3.0.0
+python-multipart>=0.0.6
+python-dotenv>=1.0.0
+httpx>=0.25.0,<1.0.0
+
+# MCP (Model Context Protocol)
+# Note: MCP requires Python 3.10+. On Python 3.9, MCP features will be disabled.
+# Uncomment the line below if using Python 3.10+:
+# mcp>=0.9.0
+
+# A2A (Agent-to-Agent) Protocol
+# Note: agent-protocol package has dependency conflicts with fastapi>=0.104
+# Our custom A2A implementation works without it
+# If you need the official agent-protocol package, install separately:
+#   pip install agent-protocol==1.0.2
+# This will downgrade fastapi to 0.100.x
+
+# NEST Framework (NANDA Sandbox and Testbed)
+python-a2a>=0.1.0
+requests>=2.31.0,<3.0.0
+
+# Development dependencies
+pytest>=7.4.0,<9.0.0
+pytest-asyncio>=0.21.0,<1.0.0
+black>=23.0.0,<25.0.0
+flake8>=6.0.0,<8.0.0
+
+# macOS Compatibility Notes:
+# - All packages are compatible with macOS (Intel and Apple Silicon)
+# - If you encounter issues with grpcio on Apple Silicon (M1/M2/M3):
+#   pip install grpcio --no-binary :all:
+# - For best results on Apple Silicon, ensure you're using Python 3.9+
+# - Some packages may require Xcode Command Line Tools:
+#   xcode-select --install

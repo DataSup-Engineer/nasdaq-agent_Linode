@@ -1,0 +1,34 @@
+/var/log/nasdaq-agent/*.log {
+    # Rotate daily
+    daily
+    
+    # Keep 30 days of logs
+    rotate 30
+    
+    # Compress old logs
+    compress
+    
+    # Delay compression until next rotation
+    delaycompress
+    
+    # Don't rotate if log is empty
+    notifempty
+    
+    # Don't error if log file is missing
+    missingok
+    
+    # Create new log file with specified permissions
+    create 0644 nasdaq-agent nasdaq-agent
+    
+    # Use date as suffix for rotated files
+    dateext
+    dateformat -%Y%m%d
+    
+    # Run commands for all log files at once
+    sharedscripts
+    
+    # Reload service after rotation to reopen log files
+    postrotate
+        systemctl reload nasdaq-agent > /dev/null 2>&1 || true
+    endscript
+}
